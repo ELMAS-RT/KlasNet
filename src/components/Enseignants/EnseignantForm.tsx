@@ -8,27 +8,27 @@ interface EnseignantFormProps {
   enseignant?: Enseignant | null;
   onSave: (enseignant: Enseignant) => void;
   onCancel: () => void;
-};
+}
 
-  const EnseignantForm: React.FC<EnseignantFormProps> = ({ enseignant, onSave, onCancel }) => {
-    const { showToast } = useToast();
-    const [formData, setFormData] = useState({
-      nom: '',
-      prenoms: '',
-      sexe: 'M' as 'M' | 'F',
-      telephone: '',
-      email: '',
-      adresse: '',
-      specialite: '',
-      diplome: '',
-      dateEmbauche: new Date().toISOString().split('T')[0],
-      statut: 'Actif' as 'Actif' | 'Inactif' | 'Congé',
-      salaire: 0,
-      photo: '',
-      classesPrincipales: [] as string[],
-      matieresEnseignees: [] as string[]
-    });
-  
+const EnseignantForm: React.FC<EnseignantFormProps> = ({ enseignant, onSave, onCancel }) => {
+  const { showToast } = useToast();
+  const [formData, setFormData] = useState({
+    nom: '',
+    prenoms: '',
+    sexe: 'M' as 'M' | 'F',
+    telephone: '',
+    email: '',
+    adresse: '',
+    specialite: '',
+    diplome: '',
+    dateEmbauche: new Date().toISOString().split('T')[0],
+    statut: 'Actif' as 'Actif' | 'Inactif' | 'Congé',
+    salaire: 0,
+    photo: '',
+    classesPrincipales: [] as string[],
+    matieresEnseignees: [] as string[]
+  });
+
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSaving, setIsSaving] = useState(false);
 
@@ -114,9 +114,8 @@ interface EnseignantFormProps {
     }
   };
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const file = e.target.file\s?.[0];
     if (file) {
-          showToast('Erreur lors de la sauvegarde de l'enseignant', 'error');
       const reader = new FileReader();
       reader.onload = (e) => {
         setFormData(prev => ({ ...prev, photo: e.target?.result as string }));

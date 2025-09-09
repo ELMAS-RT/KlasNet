@@ -115,6 +115,7 @@ const EnseignantForm: React.FC<EnseignantFormProps> = ({ enseignant, onSave, onC
   };
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         setFormData(prev => ({ ...prev, photo: e.target?.result as string }));

@@ -101,7 +101,7 @@ interface EnseignantFormProps {
         onSave(newEnseignant);
       }
     } catch {
-      showToast('Erreur lors de la sauvegarde de l'enseignant', 'error');
+      showToast("Erreur lors de la sauvegarde de l'enseignant", 'error');
     } finally {
       setIsSaving(false);
     }
